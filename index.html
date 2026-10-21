@@ -1,161 +1,682 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cybersecurity portfolio showcasing SOC learning, network security, and hands-on labs.">
-  <title>Praveen Kumar | Cybersecurity Portfolio</title>
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Cybersecurity portfolio showcasing networking labs, security tools, SOC learning, and hands-on projects.">
+  <title>Cybersecurity Portfolio | Security Operations & Networking</title>
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    :root {
+      --bg: #080d18;
+      --panel: #101a2b;
+      --panel-light: #142238;
+      --cyan: #43e8ff;
+      --lime: #c7ff6b;
+      --text: #edf5ff;
+      --muted: #9aacc4;
+      --border: rgba(145, 184, 220, 0.17);
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1120;
-      color: #e5e7eb;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 85% 5%, rgba(34, 111, 157, 0.15), transparent 35%),
+        linear-gradient(rgba(67, 232, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(67, 232, 255, 0.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, 36px 36px, 36px 36px, auto;
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
     }
-    header {
-      padding: 18px 8%;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 13, 24, 0.91);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      font-size: 1.15rem;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      background: #111827;
-      border-bottom: 1px solid #263449;
+      gap: 22px;
+      font-size: 0.88rem;
+      color: var(--muted);
     }
-    .logo { color: #38bdf8; font-weight: bold; font-size: 21px; }
-    nav { display: flex; flex-wrap: wrap; gap: 18px; }
-    nav a, a { color: #38bdf8; text-decoration: none; }
-    nav a:hover, a:hover { text-decoration: underline; }
-    .hero { padding: 90px 8% 70px; text-align: center; }
-    .tag { color: #38bdf8; font-weight: bold; }
-    h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.2; }
-    h2 { color: #38bdf8; margin-top: 0; }
-    .hero p { max-width: 700px; margin: 20px auto; color: #cbd5e1; }
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 8px;
-      border: 1px solid #38bdf8;
-      border-radius: 8px;
+
+    .nav-links a:hover,
+    .text-link:hover {
+      color: var(--cyan);
     }
-    section { padding: 55px 8%; }
-    .panel {
-      background: #111827;
-      padding: 25px;
-      border: 1px solid #263449;
-      border-radius: 12px;
-    }
-    .grid {
+
+    .hero {
+      min-height: 600px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p,
+    .section-intro {
+      color: var(--muted);
+      max-width: 630px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border: 1px solid var(--cyan);
+      border-radius: 7px;
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--cyan);
+      color: #06111b;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(67, 232, 255, 0.15);
+    }
+
+    .terminal {
+      border: 1px solid rgba(67, 232, 255, 0.3);
+      background: rgba(12, 22, 38, 0.96);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+    }
+
+    .terminal-top {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font: 0.75rem monospace;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #59708a;
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font: 0.84rem/2 monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .terminal-body .green {
+      color: var(--lime);
+    }
+
+    .terminal-body .blue {
+      color: var(--cyan);
+    }
+
+    .terminal-body .dim {
+      color: #8298b4;
+    }
+
+    .status {
+      display: inline-block;
+      color: var(--lime);
+      border: 1px solid rgba(199, 255, 107, 0.3);
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 0.72rem;
+      margin-top: 12px;
+    }
+
+    section {
+      padding: 82px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 span {
+      color: var(--cyan);
+    }
+
+    .section-intro {
+      font-size: 0.97rem;
+    }
+
+    .about-grid,
+    .project-grid,
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
-    .skill {
-      background: #172338;
-      border-radius: 8px;
-      padding: 12px;
+
+    .card {
+      background: linear-gradient(145deg, rgba(20, 34, 56, 0.92), rgba(12, 21, 36, 0.92));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
     }
+
+    .card:hover {
+      border-color: rgba(67, 232, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .card-icon {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 17px;
+    }
+
+    .tag {
+      background: rgba(67, 232, 255, 0.07);
+      color: #a8f5ff;
+      border: 1px solid rgba(67, 232, 255, 0.17);
+      border-radius: 5px;
+      padding: 4px 9px;
+      font-size: 0.75rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-card .text-link {
+      color: var(--lime);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    .project-card p {
+      flex: 1;
+    }
+
+    .learning-note {
+      margin-top: 20px;
+      padding: 17px 20px;
+      border-left: 3px solid var(--lime);
+      background: rgba(199, 255, 107, 0.045);
+      color: var(--muted);
+      border-radius: 0 7px 7px 0;
+      font-size: 0.9rem;
+    }
+
+    .contact-panel {
+      background: linear-gradient(120deg, rgba(67, 232, 255, 0.08), rgba(199, 255, 107, 0.045));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 35px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .contact-panel h3 {
+      font-size: 1.4rem;
+      margin-bottom: 7px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+    }
+
     footer {
-      text-align: center;
-      padding: 25px;
-      border-top: 1px solid #263449;
-      color: #94a3b8;
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
     }
-    @media (max-width: 600px) {
-      header { padding: 16px 5%; }
-      nav { gap: 12px; }
-      section { padding: 40px 5%; }
-      .hero { padding: 65px 5%; }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 35px;
+        padding-top: 65px;
+      }
+
+      .nav-inner {
+        padding: 13px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 0.8rem;
+      }
+
+      .about-grid,
+      .project-grid,
+      .skill-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .contact-panel {
+        padding: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">Praveen Kumar | Cybersecurity</div>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="#home">SEC<span>/</span>PORTFOLIO</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="tag">CYBERSECURITY • NETWORKING • SOC</p>
-      <h1>Learning Today.<br>Securing Tomorrow.</h1>
-      <p>
-        I'm a B.Tech Cybersecurity graduate building practical skills
-        in network security, security monitoring, and incident investigation.
-        This portfolio documents my learning and hands-on projects.
-      </p>
-      <a class="button" href="#projects">Explore My Projects</a>
-      <a class="button" href="https://github.com/Praveen420420">My GitHub</a>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Cybersecurity · Networking · Blue Team</div>
+
+        <h1>Learning Today.<br><span>Securing Tomorrow.</span></h1>
+
+        <p>
+          Cybersecurity graduate building practical skills in network security,
+          traffic analysis, and security operations. I learn by building labs,
+          investigating activity, and documenting what I discover.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore My Labs ↘</a>
+          <a class="btn" href="https://github.com/Praveen420420" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-label="Cybersecurity terminal illustration">
+        <div class="terminal-top">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span style="margin-left: 8px;">security-lab / overview</span>
+        </div>
+
+        <div class="terminal-body">
+          <div class="dim"># learning environment</div>
+          <div><span class="green">user@security-lab</span>:~$ whoami</div>
+          <div class="blue">Cybersecurity Graduate</div>
+          <br>
+          <div><span class="green">user@security-lab</span>:~$ focus --current</div>
+          <div>Network Analysis</div>
+          <div>SOC Fundamentals</div>
+          <div>Threat Detection</div>
+          <br>
+          <div><span class="green">user@security-lab</span>:~$ status</div>
+          <div class="blue">Learning. Practicing. Documenting.</div>
+          <div class="status">● LAB MODE</div>
+        </div>
+      </div>
     </section>
 
     <section id="about">
-      <div class="panel">
-        <h2>About Me</h2>
-        <p>
-          I'm developing my cybersecurity foundation through networking
-          labs, traffic analysis, security tools, and structured practice.
-          My goal is to understand how systems work, how threats are detected,
-          and how digital environments can be better protected.
-        </p>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">01 / About</div>
+          <h2>Curious mind. <span>Security mindset.</span></h2>
+          <p class="section-intro">
+            My journey is focused on understanding how networks work,
+            how attacks are detected, and how systems can be made more secure.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>My Background</h3>
+            <p>
+              I am a B.Tech Cybersecurity graduate developing hands-on
+              technical skills through guided practice, personal labs,
+              and continuous learning.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◎</div>
+            <h3>My Direction</h3>
+            <p>
+              I am building a foundation for entry-level opportunities in
+              Security Operations (SOC), network security, and IT support,
+              with an emphasis on troubleshooting and investigation.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="skills">
-      <h2>Technical Skills & Learning</h2>
-      <div class="grid">
-        <div class="skill">Networking: TCP/IP, DNS, DHCP, VLANs</div>
-        <div class="skill">Traffic Analysis: Wireshark</div>
-        <div class="skill">Network Scanning: Nmap</div>
-        <div class="skill">SOC Learning: SIEM fundamentals</div>
-        <div class="skill">Security Monitoring: Wazuh / Splunk learning</div>
-        <div class="skill">Linux: Kali Linux fundamentals</div>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">02 / Technical Toolkit</div>
+          <h2>Tools I’m <span>learning and practicing.</span></h2>
+          <p class="section-intro">
+            A developing toolkit across networking, security analysis,
+            operating systems, and scripting. Skills reflect my current
+            learning journey, not professional certifications.
+          </p>
+        </div>
+
+        <div class="skill-grid">
+          <article class="card">
+            <h3>◈ Networking</h3>
+            <p>Network fundamentals and infrastructure labs.</p>
+            <div class="tag-list">
+              <span class="tag">OSI / TCP-IP</span>
+              <span class="tag">IPv4 / Subnetting</span>
+              <span class="tag">VLANs</span>
+              <span class="tag">DHCP / DNS</span>
+              <span class="tag">Cisco Packet Tracer</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>⌁ Security Analysis</h3>
+            <p>Practicing network visibility and security testing fundamentals.</p>
+            <div class="tag-list">
+              <span class="tag">Wireshark</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">Burp Suite</span>
+              <span class="tag">OWASP Labs</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>▣ SOC & Monitoring</h3>
+            <p>Learning log collection, event investigation, and alert analysis.</p>
+            <div class="tag-list">
+              <span class="tag">Wazuh</span>
+              <span class="tag">Splunk</span>
+              <span class="tag">Windows Event Viewer</span>
+              <span class="tag">SIEM Fundamentals</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>⌘ Systems & Scripting</h3>
+            <p>Building comfort with Linux, Windows, and basic automation.</p>
+            <div class="tag-list">
+              <span class="tag">Linux / Kali Linux</span>
+              <span class="tag">Windows</span>
+              <span class="tag">Python Basics</span>
+              <span class="tag">Bash Basics</span>
+            </div>
+          </article>
+        </div>
       </div>
-      <p>Skills listed here should reflect your actual experience and current learning progress.</p>
     </section>
 
     <section id="projects">
-      <h2>Projects & Hands-on Labs</h2>
-      <div class="grid">
-        <article class="panel">
-          <h3>Network Design Lab</h3>
-          <p>Document office network topology, IP addressing, VLANs, and network services using Cisco Packet Tracer.</p>
-          <p><em>Project documentation coming soon.</em></p>
-        </article>
-        <article class="panel">
-          <h3>Network Traffic Analysis</h3>
-          <p>Practice packet analysis, TCP handshakes, DNS queries, and display filters with Wireshark.</p>
-          <p><em>Project documentation coming soon.</em></p>
-        </article>
-        <article class="panel">
-          <h3>SOC Monitoring Lab</h3>
-          <p>Explore security logs, alerts, event investigation, and incident response workflows.</p>
-          <p><em>Project documentation coming soon.</em></p>
-        </article>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">03 / Practical Work</div>
+          <h2>Labs, projects & <span>investigations.</span></h2>
+          <p class="section-intro">
+            A portfolio of practical exercises and projects. I’m adding
+            detailed write-ups, configurations, screenshots, and lessons
+            learned as each project is documented.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="card-icon">⌘</div>
+            <h3>Office Network Design</h3>
+            <p>
+              A Cisco Packet Tracer lab exploring network topology,
+              device connectivity, IP addressing, and the foundations
+              of office network infrastructure.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Packet Tracer</span>
+              <span class="tag">Networking</span>
+              <span class="tag">Lab</span>
+            </div>
+            <a class="text-link" href="https://github.com/Praveen420420?tab=repositories" target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">⌁</div>
+            <h3>Network Traffic Analysis</h3>
+            <p>
+              Learning to inspect packet captures with Wireshark,
+              understand network protocols, and identify useful
+              traffic patterns during analysis.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Wireshark</span>
+              <span class="tag">TCP/IP</span>
+              <span class="tag">Analysis</span>
+            </div>
+            <a class="text-link" href="https://github.com/Praveen420420?tab=repositories" target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">◉</div>
+            <h3>Nmap Reconnaissance Lab</h3>
+            <p>
+              Practicing authorized host discovery and service enumeration
+              in a controlled lab to understand what network scans reveal.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Nmap</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Lab Safety</span>
+            </div>
+            <a class="text-link" href="https://github.com/Praveen420420?tab=repositories" target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">▤</div>
+            <h3>Cyber Breach Prediction</h3>
+            <p>
+              Academic project exploring cybersecurity breach prediction
+              using Python, Django, and machine-learning concepts.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+              <span class="tag">Machine Learning</span>
+            </div>
+            <a class="text-link" href="https://github.com/Praveen420420?tab=repositories" target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+          </article>
+        </div>
+
+        <div class="learning-note">
+          <strong style="color: var(--lime);">Next step:</strong>
+          Add a README or project folder for each lab with its objective,
+          setup, commands or configuration, screenshots, findings, and
+          lessons learned. Replace repository links with direct project
+          links when those repositories are ready.
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="panel">
-        <h2>Connect With Me</h2>
-        <p>I'm interested in cybersecurity, networking, and continuous learning.</p>
-        <p><a href="https://github.com/Praveen420420">GitHub Profile</a></p>
-        <p>Add your LinkedIn profile URL here when ready.</p>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">04 / Connect</div>
+          <h2>Let’s connect and <span>learn together.</span></h2>
+          <p class="section-intro">
+            Interested in cybersecurity, networking, SOC fundamentals,
+            and practical technical learning.
+          </p>
+        </div>
+
+        <div class="contact-panel">
+          <div>
+            <h3>Open to connecting</h3>
+            <p>Find my work and professional profile online.</p>
+          </div>
+
+          <div class="actions" style="margin-top: 0;">
+            <a class="btn primary" href="https://github.com/Praveen420420" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Built while learning cybersecurity. Keep learning. Keep improving.</p>
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Cybersecurity Portfolio</span>
+      <span>Built with HTML & CSS · Learning in public</span>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
