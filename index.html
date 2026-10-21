@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cybersecurity portfolio showcasing SOC learning, network security, and hands-on labs.">
+  <title>Praveen Kumar | Cybersecurity Portfolio</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+    header {
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #111827;
+      border-bottom: 1px solid #263449;
+    }
+    .logo { color: #38bdf8; font-weight: bold; font-size: 21px; }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    nav a, a { color: #38bdf8; text-decoration: none; }
+    nav a:hover, a:hover { text-decoration: underline; }
+    .hero { padding: 90px 8% 70px; text-align: center; }
+    .tag { color: #38bdf8; font-weight: bold; }
+    h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.2; }
+    h2 { color: #38bdf8; margin-top: 0; }
+    .hero p { max-width: 700px; margin: 20px auto; color: #cbd5e1; }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 8px;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+    }
+    section { padding: 55px 8%; }
+    .panel {
+      background: #111827;
+      padding: 25px;
+      border: 1px solid #263449;
+      border-radius: 12px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .skill {
+      background: #172338;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #263449;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      header { padding: 16px 5%; }
+      nav { gap: 12px; }
+      section { padding: 40px 5%; }
+      .hero { padding: 65px 5%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Praveen Kumar | Cybersecurity</div>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="tag">CYBERSECURITY • NETWORKING • SOC</p>
+      <h1>Learning Today.<br>Securing Tomorrow.</h1>
+      <p>
+        I'm a B.Tech Cybersecurity graduate building practical skills
+        in network security, security monitoring, and incident investigation.
+        This portfolio documents my learning and hands-on projects.
+      </p>
+      <a class="button" href="#projects">Explore My Projects</a>
+      <a class="button" href="https://github.com/Praveen420420">My GitHub</a>
+    </section>
+
+    <section id="about">
+      <div class="panel">
+        <h2>About Me</h2>
+        <p>
+          I'm developing my cybersecurity foundation through networking
+          labs, traffic analysis, security tools, and structured practice.
+          My goal is to understand how systems work, how threats are detected,
+          and how digital environments can be better protected.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills & Learning</h2>
+      <div class="grid">
+        <div class="skill">Networking: TCP/IP, DNS, DHCP, VLANs</div>
+        <div class="skill">Traffic Analysis: Wireshark</div>
+        <div class="skill">Network Scanning: Nmap</div>
+        <div class="skill">SOC Learning: SIEM fundamentals</div>
+        <div class="skill">Security Monitoring: Wazuh / Splunk learning</div>
+        <div class="skill">Linux: Kali Linux fundamentals</div>
+      </div>
+      <p>Skills listed here should reflect your actual experience and current learning progress.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects & Hands-on Labs</h2>
+      <div class="grid">
+        <article class="panel">
+          <h3>Network Design Lab</h3>
+          <p>Document office network topology, IP addressing, VLANs, and network services using Cisco Packet Tracer.</p>
+          <p><em>Project documentation coming soon.</em></p>
+        </article>
+        <article class="panel">
+          <h3>Network Traffic Analysis</h3>
+          <p>Practice packet analysis, TCP handshakes, DNS queries, and display filters with Wireshark.</p>
+          <p><em>Project documentation coming soon.</em></p>
+        </article>
+        <article class="panel">
+          <h3>SOC Monitoring Lab</h3>
+          <p>Explore security logs, alerts, event investigation, and incident response workflows.</p>
+          <p><em>Project documentation coming soon.</em></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="panel">
+        <h2>Connect With Me</h2>
+        <p>I'm interested in cybersecurity, networking, and continuous learning.</p>
+        <p><a href="https://github.com/Praveen420420">GitHub Profile</a></p>
+        <p>Add your LinkedIn profile URL here when ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built while learning cybersecurity. Keep learning. Keep improving.</p>
+  </footer>
+</body>
+</html>
